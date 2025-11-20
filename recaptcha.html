@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>reCAPTCHA Test</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script type="text/javascript">
+        function onSubmit(token) {
+          // Android app ko token bhejna
+          if (window.AndroidInterface && window.AndroidInterface.onTokenReceived) {
+            window.AndroidInterface.onTokenReceived(token);
+          }
+        }
+    </script>
+</head>
+<body>
+<form action="javascript:void(0);" method="post">
+    <button
+            class="g-recaptcha"
+            data-sitekey="6LePzBIsAAAAACobWUvZzFmLuqtYxpEXbpiCLOi4"
+            data-callback="onSubmit">
+        Verify reCAPTCHA
+    </button>
+</form>
+</body>
+</html>
