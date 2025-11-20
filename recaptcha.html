@@ -2,10 +2,17 @@
   <head>
     <title>reCAPTCHA demo: Simple page</title>
     <script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
+    <script type="text/javascript">
+        function onSubmit(token) {
+          if (window.AndroidInterface && window.AndroidInterface.onTokenReceived) {
+            window.AndroidInterface.onTokenReceived(token);
+          }
+        }
+    </script>
   </head>
   <body>
-    <form action="" method="POST">
-      <div class="g-recaptcha" data-sitekey="6LePzBIsAAAAACobWUvZzFmLuqtYxpEXbpiCLOi4" data-action="LOGIN"></div>
+    <form action="javascript:void(0);" method="POST">
+      <div class="g-recaptcha" data-sitekey="6LePzBIsAAAAACobWUvZzFmLuqtYxpEXbpiCLOi4" data-action="LOGIN" data-callback="onSubmit"></div>
       <br/>
       <input type="submit" value="Submit">
     </form>
